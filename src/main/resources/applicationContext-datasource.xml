@@ -17,7 +17,7 @@
         <property name="ignoreUnresolvablePlaceholders" value="true"/>
         <property name="locations">
             <list>
-                <value>classpath:datasource.properties</value>
+                <value>classpath:src/main/resources.beta/datasource.properties</value>
             </list>
         </property>
         <property name="fileEncoding" value="utf-8"/>
