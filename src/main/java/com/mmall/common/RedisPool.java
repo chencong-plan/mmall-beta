@@ -4,6 +4,7 @@ import redis.clients.jedis.JedisPool;
 
 /**
  * Jedis连接Redis的连接池
+ *
  * @author : ChenCong
  * @date : Created in 17:22 2018/3/2
  */
@@ -32,7 +33,6 @@ public class RedisPool {
     /**
      * 在Borrow一个jedis实例的时候是否进行验证操作。
      * 如果赋值为true，则拿到的jedis是可用的
-     *
      */
     private static Boolean testOnBorrow = true;
 
@@ -42,8 +42,6 @@ public class RedisPool {
      * 如果赋值为true时，则放回的jedis实例为可用的
      */
     private static Boolean testOnReturn = true;
-
-
 
 
 }
