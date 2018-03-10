@@ -1,4 +1,4 @@
-## mmall_learning
+## mmall-beta 学习日志
 
 ### maven 环境隔离
 
