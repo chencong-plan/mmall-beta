@@ -1,6 +1,6 @@
 ## mmall-beta 学习日志
 
-### maven 环境隔离
+### maven 环境隔离，`dev`(开发环境) `beta`(测试环境) `prod`(生产环境) 之间的相互隔离和切换 
 
 ### redis安装（window/linux） 及其数据结构/基本命令 键命令
 
