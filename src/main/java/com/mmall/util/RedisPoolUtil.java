@@ -124,13 +124,13 @@ public class RedisPoolUtil {
 
     public static void main(String[] args) {
         Jedis jedis = RedisPool.getJedis();
-        RedisPoolUtil.set("keyTest","keyValue");
+        RedisPoolUtil.set("keyTest", "keyValue");
 
-        String  value = RedisPoolUtil.get("keyTest");
+        String value = RedisPoolUtil.get("keyTest");
 
-        RedisPoolUtil.setEx("keyEx","valueEx",60*10);
+        RedisPoolUtil.setEx("keyEx", "valueEx", 60 * 10);
 
-        RedisPoolUtil.expire("keyTest",60*20);
+        RedisPoolUtil.expire("keyTest", 60 * 20);
 
     }
 }
