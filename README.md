@@ -4,7 +4,7 @@
 
 ### redis安装（window/linux） 及其数据结构/基本命令 键命令
 
-### 对`PropertiesUtil`进行了优化性的封装
+### 对`PropertiesUtil`进行了优化性的封装，提供获取`Integer` `Boolean` `String`等不同类型配置文件value的方法
 
 ### `redisPool`连接池的完善 
 
