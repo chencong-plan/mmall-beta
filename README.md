@@ -6,7 +6,7 @@
 
 ### 对`PropertiesUtil`进行了优化性的封装，提供获取`Integer` `Boolean` `String`等不同类型配置文件value的方法
 
-### `redisPool`连接池的完善 
+### `redisPool`连接池的完善,获取jedis对象`getRedis()`，返回资源`returnResource()` 和 `returnBrokenResource()`使用，查看学习jedis源码
 
 ### IDE工具安装`lombok`工具，引入其依赖,使用注解，eg:@Sl4j @Setter @Getter @Data等，清楚各自含义
 
