@@ -11,3 +11,5 @@
 ### IDE工具安装`lombok`工具，引入其依赖,使用注解，eg:@Sl4j @Setter @Getter @Data等，清楚各自含义
 
 ### `RedisPoolUtil`工具类封装，提供对Redis的set get del setEx expire等操作的方法
+
+### 封装`JsonUtil`工具类，提供json和object之间相互转换方法，同时提供json转List<User> Map<User,Category>等复杂集合对象的转换方法
