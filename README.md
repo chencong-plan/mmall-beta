@@ -13,3 +13,10 @@
 ### `RedisPoolUtil`工具类封装，提供对Redis的set get del setEx expire等操作的方法
 
 ### 封装`JsonUtil`工具类，提供json和object之间相互转换方法，同时提供json转List<User> Map<User,Category>等复杂集合对象的转换方法
+
+### `JsonUtil`objectMapper当中各种属性的配置 `
+ + `objectMapper.setSerializationInclusion(Inclusion.ALWAYS);`
+ + `objectMapper.configure(SerializationConfig.Feature.WRITE_DATES_AS_TIMESTAMPS, false);`
+ + `objectMapper.configure(SerializationConfig.Feature.FAIL_ON_EMPTY_BEANS, false);`
+ + `objectMapper.setDateFormat(new SimpleDateFormat(DateTimeUtil.STANDARD_FORMAT));`
+ + `objectMapper.configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);`
