@@ -132,6 +132,5 @@ public class RedisPoolUtil {
 
         RedisPoolUtil.expire("keyTest",60*20);
 
-        RedisPoolUtil.del("keyTest");
     }
 }
