@@ -12,7 +12,7 @@ import redis.clients.jedis.Jedis;
 @Slf4j
 public class RedisPoolUtil {
     /**
-     * jedis set方法，通识设置值过期时间exTime,单位:秒<br>
+     * jedis set方法，通过设置值过期时间exTime,单位:秒<br>
      * 为后期session服务器共享，Redis存储用户session所准备
      *
      * @param key    key
@@ -121,6 +121,11 @@ public class RedisPoolUtil {
         return result;
     }
 
+    /**
+     * xxxx描述信息
+     *
+     * @param args 参数
+     */
     public static void main(String[] args) {
         Jedis jedis = RedisPool.getJedis();
         RedisPoolUtil.set("keyTest", "keyValue");

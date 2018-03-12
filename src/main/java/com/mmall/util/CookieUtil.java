@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 public class CookieUtil {
 
     /**
-     * 域名读写，eg:3.abc.dianpoint.com 只能够读到abc.dianpoint.com下的内容
+     * 域名读写，eg:3.abc.dianpoint.com 只能够读到abc.dianpoint.com下的内容 .dianpoint.com
      */
     private final static String COOKIE_DOMAIN = ".dianpoint.com";
     private final static String COOKIE_NAME = "mmall_login_token";
