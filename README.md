@@ -20,3 +20,7 @@
  + `objectMapper.configure(SerializationConfig.Feature.FAIL_ON_EMPTY_BEANS, false);`
  + `objectMapper.setDateFormat(new SimpleDateFormat(DateTimeUtil.STANDARD_FORMAT));`
  + `objectMapper.configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);`
+ 
+### `An invalid domain [.dianpoint.com] was specified for this cookie` 这个异常，使用cookie时候，Tomcat8和Tomcat7不太一样。
+ + 解决方法：在Tomcat8的conf/content.xml当中添加如下配置
+   `<CookieProcessor className="org.apache.tomcat.util.http.LegacyCookieProcessor" />`

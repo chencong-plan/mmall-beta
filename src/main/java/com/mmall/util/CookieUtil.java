@@ -53,6 +53,7 @@ public class CookieUtil {
 
         /*这是根目录，cookie存在的domain*/
         ck.setPath("/");
+        ck.setHttpOnly(true);
 
         /*如果这个setMaxAge不设置，cookie就不会写入硬盘，而是在内存当中，只是在当前页面有效*/
         /*同理：如果setMaxAge设置成-1 代表为永久*/

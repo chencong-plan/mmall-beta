@@ -53,12 +53,13 @@ public class UserController {
         if (response.isSuccess()) {
             /*此时为单节点tomcat，在这里已经将session存储在redis 当中了*/
             /*session.setAttribute(Const.CURRENT_USER, response.getData());*/
+            /*删除cookie*/
+            CookieUtil.delLoginToken(httpServletRequest,httpServletResponse);
             /*sessionId 存储在cookie当中*/
             CookieUtil.writeLoginToken(httpServletResponse, session.getId());
             /*从cookie当中独处cookie*/
             CookieUtil.readLoginToken(httpServletRequest);
-            /*删除cookie*/
-            CookieUtil.delLoginToken(httpServletRequest,httpServletResponse);
+
             RedisPoolUtil.setEx(session.getId(), JsonUtil.obj2String(response.getData()), Const.RedisCacheExtime.REDIS_SESSION_EXTIME);
         }
         return response;
