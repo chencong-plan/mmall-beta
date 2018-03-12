@@ -5,7 +5,8 @@ import com.mmall.common.ResponseCode;
 import com.mmall.common.ServerResponse;
 import com.mmall.pojo.User;
 import com.mmall.service.IUserService;
-import com.sun.corba.se.spi.activation.Server;
+import com.mmall.util.JsonUtil;
+import com.mmall.util.RedisPoolUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpSession;
 
 /**
- * Created by geely
+ * 用户登录controller
+ *
+ * @author chencong
  */
 @Controller
 @RequestMapping("/user/")
@@ -39,7 +42,9 @@ public class UserController {
     public ServerResponse<User> login(String username, String password, HttpSession session) {
         ServerResponse<User> response = iUserService.login(username, password);
         if (response.isSuccess()) {
-            session.setAttribute(Const.CURRENT_USER, response.getData());
+            /*此时为单节点tomcat，在这里已经将session存储在redis 当中了*/
+            /*session.setAttribute(Const.CURRENT_USER, response.getData());*/
+            RedisPoolUtil.setEx(session.getId(), JsonUtil.obj2String(response.getData()), Const.RedisCacheExtime.REDIS_SESSION_EXTIME);
         }
         return response;
     }
