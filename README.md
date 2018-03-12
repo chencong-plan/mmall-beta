@@ -24,3 +24,7 @@
 ### `An invalid domain [.dianpoint.com] was specified for this cookie` 这个异常，使用cookie时候，Tomcat8和Tomcat7不太一样。
  + 解决方法：在Tomcat8的conf/content.xml当中添加如下配置
    `<CookieProcessor className="org.apache.tomcat.util.http.LegacyCookieProcessor" />`
+   
+   [An invalid domain was specified for this cookie](https://stackoverflow.com/questions/42524002/an-invalid-domain-was-specified-for-this-cookie)
+   
+   [How to change Cookie Processor to LegacyCookieProcessor in tomcat 8](https://stackoverflow.com/questions/38696081/how-to-change-cookie-processor-to-legacycookieprocessor-in-tomcat-8)
