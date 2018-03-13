@@ -35,10 +35,18 @@
   
    
 ### 单点登录Session共享
- + 登录操作
+ + *登录操作*
+ 
  将用户登录成功之后的sessionId存入cookie取名为loginToken，同时将其存入redis当中，key=sessionId value=User实体的Json字符串，同时设置redis当中数据过期时间(用户登录过期时间)
- + 查看用户信息
+ + *查看用户信息*
+ 
  从cookie当中获取loginToken,如果loginToken为null则说明用户未登录，直接返回,然后从redis当中获取key=loginToken的value,并将其Json反序列化成User对象，然后返回
- + 登出操作
+ + *登出操作*
+ 
  从cookie当中获取到loginToken，然后从redis当中key=loginToken的value
+ 
+ + *存在问题*
+ 
+ loginToken存储在cookie当中存在有效时间，现在不能满足，用户进行除登出操作之外的其他请求时自动刷新loginToken的过期时间，用户登录一定时间到期后(期间无论是否进行其他操作)
+ 都会让用户再次登录。而我们需要的是，在有效期之内只要用户发送了除登出操作之外的请求，都会自动更新这个过期时间
  
