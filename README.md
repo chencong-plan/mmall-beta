@@ -28,3 +28,17 @@
    [An invalid domain was specified for this cookie](https://stackoverflow.com/questions/42524002/an-invalid-domain-was-specified-for-this-cookie)
    
    [How to change Cookie Processor to LegacyCookieProcessor in tomcat 8](https://stackoverflow.com/questions/38696081/how-to-change-cookie-processor-to-legacycookieprocessor-in-tomcat-8)
+  
+### CookieUtil工具类封装
+  + 熟悉在客户端种cookie的domain跨域问题
+  + 封装常用对cookie操作的read write del方法
+  
+   
+### 单点登录Session共享
+ + 登录操作
+ 将用户登录成功之后的sessionId存入cookie取名为loginToken，同时将其存入redis当中，key=sessionId value=User实体的Json字符串，同时设置redis当中数据过期时间(用户登录过期时间)
+ + 查看用户信息
+ 从cookie当中获取loginToken,如果loginToken为null则说明用户未登录，直接返回,然后从redis当中获取key=loginToken的value,并将其Json反序列化成User对象，然后返回
+ + 登出操作
+ 从cookie当中获取到loginToken，然后从redis当中key=loginToken的value
+ 
