@@ -15,11 +15,11 @@
 ### 封装`JsonUtil`工具类，提供json和object之间相互转换方法，同时提供json转List<User> Map<User,Category>等复杂集合对象的转换方法
 
 ### `JsonUtil`objectMapper当中各种属性的配置 `
- + `objectMapper.setSerializationInclusion(Inclusion.ALWAYS);`
- + `objectMapper.configure(SerializationConfig.Feature.WRITE_DATES_AS_TIMESTAMPS, false);`
- + `objectMapper.configure(SerializationConfig.Feature.FAIL_ON_EMPTY_BEANS, false);`
- + `objectMapper.setDateFormat(new SimpleDateFormat(DateTimeUtil.STANDARD_FORMAT));`
- + `objectMapper.configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);`
+ + `objectMapper.setSerializationInclusion(Inclusion.ALWAYS); 对象的所有字段全部列入序列化`  
+ + `objectMapper.configure(SerializationConfig.Feature.WRITE_DATES_AS_TIMESTAMPS, false); 取消默认转换timestamps`
+ + `objectMapper.configure(SerializationConfig.Feature.FAIL_ON_EMPTY_BEANS, false); 忽略空bean转json错误`
+ + `objectMapper.setDateFormat(new SimpleDateFormat(DateTimeUtil.STANDARD_FORMAT)); 所有的日期格式都统一为以下格式：yyyy-MM-dd HH:mm:ss`
+ + `objectMapper.configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false); 反序列化时，忽略在json字符串当中存在，但是在java对象当中不存在的对应属性的情况，防止错误`
  
 ### `An invalid domain [.dianpoint.com] was specified for this cookie` 这个异常，使用cookie时候，Tomcat8和Tomcat7不太一样。
  + 解决方法：在Tomcat8的conf/content.xml当中添加如下配置
