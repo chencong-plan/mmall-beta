@@ -23,6 +23,7 @@ public class ShippingServiceImpl implements IShippingService {
     @Autowired
     private ShippingMapper shippingMapper;
 
+    @Override
     public ServerResponse add(Integer userId, Shipping shipping){
         shipping.setUserId(userId);
         int rowCount = shippingMapper.insert(shipping);
@@ -34,6 +35,7 @@ public class ShippingServiceImpl implements IShippingService {
         return ServerResponse.createByErrorMessage("新建地址失败");
     }
 
+    @Override
     public ServerResponse<String> del(Integer userId,Integer shippingId){
         int resultCount = shippingMapper.deleteByShippingIdUserId(userId,shippingId);
         if(resultCount > 0){
@@ -43,6 +45,7 @@ public class ShippingServiceImpl implements IShippingService {
     }
 
 
+    @Override
     public ServerResponse update(Integer userId, Shipping shipping){
         shipping.setUserId(userId);
         int rowCount = shippingMapper.updateByShipping(shipping);
@@ -52,6 +55,7 @@ public class ShippingServiceImpl implements IShippingService {
         return ServerResponse.createByErrorMessage("更新地址失败");
     }
 
+    @Override
     public ServerResponse<Shipping> select(Integer userId, Integer shippingId){
         Shipping shipping = shippingMapper.selectByShippingIdUserId(userId,shippingId);
         if(shipping == null){
@@ -61,6 +65,7 @@ public class ShippingServiceImpl implements IShippingService {
     }
 
 
+    @Override
     public ServerResponse<PageInfo> list(Integer userId,int pageNum,int pageSize){
         PageHelper.startPage(pageNum,pageSize);
         List<Shipping> shippingList = shippingMapper.selectByUserId(userId);

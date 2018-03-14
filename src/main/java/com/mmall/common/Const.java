@@ -15,6 +15,11 @@ public class Const {
     public static final String USERNAME = "username";
 
     /**
+     * 将tokeCache放入redis当中
+     */
+    public static final String TOKEN_PREFIX = "token_";
+
+    /**
      * redis 当中存储session过期时间，60*30 秒
      */
     public interface RedisCacheExtime{
