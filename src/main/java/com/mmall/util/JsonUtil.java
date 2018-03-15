@@ -28,7 +28,7 @@ public class JsonUtil {
 
     /*
      * 初始化objectMapper
-     * */
+     */
     static {
         /*对象的所有字段全部列入序列化*/
         objectMapper.setSerializationInclusion(Inclusion.ALWAYS);

@@ -116,6 +116,25 @@
  现在只存在登录成功后30分钟之内不发送任何请求，redis当中的loginToken则会过期
 
 
+## Redis分布式
+
+### Redis分布式算法原理(一致性算法)
+
++ 传统分布式算法
++ Consistent hashing 一致性算法原理
++ Hash倾斜性
++ 虚拟节点
++ Consistent hashing命中率
+
+
+### Redis分布式环境配置
+
+### Redis分布式服务端及客户端启动
+
+### 封装分布式Shared Redis API
+
+### 集群和分布式概念区分
+
 ## 联系
 
 [聪聪](https://ccoder.cc/)的独立博客 ，一个喜欢技术，喜欢钻研的95后。如果你看到这篇文章，千里之外，我在等你联系。
