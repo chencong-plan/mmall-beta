@@ -29,7 +29,6 @@ public class RedisPoolUtil {
         } catch (Exception e) {
             log.error("set key:{} value{} error", key, value, e);
             RedisPool.returnBrokenResource(jedis);
-            return result;
         }
         RedisPool.returnResource(jedis);
         return result;
@@ -51,7 +50,6 @@ public class RedisPoolUtil {
         } catch (Exception e) {
             log.error("expire key:{} error ", key, e);
             RedisPool.returnBrokenResource(jedis);
-            return result;
         }
         RedisPool.returnResource(jedis);
         return result;
@@ -74,7 +72,6 @@ public class RedisPoolUtil {
         } catch (Exception e) {
             log.error("set key:{} value{} error", key, value, e);
             RedisPool.returnBrokenResource(jedis);
-            return result;
         }
         RedisPool.returnResource(jedis);
         return result;
@@ -95,7 +92,6 @@ public class RedisPoolUtil {
         } catch (Exception e) {
             log.error("set key:{}error", key, e);
             RedisPool.returnBrokenResource(jedis);
-            return result;
         }
         RedisPool.returnResource(jedis);
         return result;
@@ -116,7 +112,6 @@ public class RedisPoolUtil {
         } catch (Exception e) {
             log.error("del key:{} error", key, e);
             RedisPool.returnBrokenResource(jedis);
-            return result;
         }
         return result;
     }
