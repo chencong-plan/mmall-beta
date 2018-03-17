@@ -142,6 +142,30 @@
 
 ### spring-session-data-redis 学习
 
+## springMVC 全局异常
+
+### 使用ModelAndView
+
+### 使用ModelAndView返回jackson数据
+```java
+@Slf4j
+@Component
+public class ExceptionResolver implements HandlerExceptionResolver {
+    @Override
+    public ModelAndView resolveException(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) {
+        log.error("{} Exception", httpServletRequest.getRequestURI(), e);
+        ModelAndView modelAndView = new ModelAndView(new MappingJacksonJsonView());
+        /*当时用jackson2.x时使用MappingJackson2JsonView 在这里使用Jackson1.9.12*/
+
+        modelAndView.addObject("status", ResponseCode.ERROR.getCode());
+        modelAndView.addObject("msg", "接口异常，服务端接口异常信息");
+        modelAndView.addObject("data",e.toString());
+        return  modelAndView;
+    }
+}
+
+```
+
 ## 联系
 
 [聪聪](https://ccoder.cc/)的独立博客 ，一个喜欢技术，喜欢钻研的95后。如果你看到这篇文章，千里之外，我在等你联系。
