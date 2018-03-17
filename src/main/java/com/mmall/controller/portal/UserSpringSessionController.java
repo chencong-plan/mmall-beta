@@ -48,6 +48,8 @@ public class UserSpringSessionController {
                                       String password,
                                       HttpSession session,
                                       HttpServletResponse httpServletResponse) {
+        int i = 0;
+        int j = 666 / i;
         ServerResponse<User> response = iUserService.login(username, password);
         if (response.isSuccess()) {
             /*此时为单节点tomcat，在这里已经将session存储在redis 当中了*/
@@ -55,11 +57,13 @@ public class UserSpringSessionController {
             /*删除cookie*/
             //CookieUtil.delLoginToken(httpServletRequest,httpServletResponse);
             /*sessionId 存储在cookie当中*/
-            /*CookieUtil.writeLoginToken(httpServletResponse, session.getId())*/;
+            /*CookieUtil.writeLoginToken(httpServletResponse, session.getId())*/
+            ;
             /*从cookie当中独处cookie*/
             // CookieUtil.readLoginToken(httpServletRequest);
 
-            /*RedisShardedPoolUtil.setEx(session.getId(), JsonUtil.obj2String(response.getData()), Const.RedisCacheExtime.REDIS_SESSION_EXTIME)*/;
+            /*RedisShardedPoolUtil.setEx(session.getId(), JsonUtil.obj2String(response.getData()), Const.RedisCacheExtime.REDIS_SESSION_EXTIME)*/
+            ;
         }
         return response;
     }
@@ -78,7 +82,7 @@ public class UserSpringSessionController {
      */
     @RequestMapping(value = "logout.do", method = RequestMethod.GET)
     @ResponseBody
-    public ServerResponse<String> logout(HttpSession session,HttpServletRequest request, HttpServletResponse response) {
+    public ServerResponse<String> logout(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
         session.removeAttribute(Const.CURRENT_USER);
         /*String loginToken = CookieUtil.readLoginToken(request);
         CookieUtil.delLoginToken(request, response);
@@ -96,13 +100,13 @@ public class UserSpringSessionController {
      * 然后将获取到的JSON字符串转成User对象<br>
      * 判断User对象是否为空，为null返回未登录，否则返回相应用户信息
      *
-     * @param session  session
+     * @param session            session
      * @param httpServletRequest request
      * @return 返回请求
      */
     @RequestMapping(value = "get_user_info.do", method = RequestMethod.GET)
     @ResponseBody
-    public ServerResponse<User> getUserInfo(HttpSession session,HttpServletRequest httpServletRequest) {
+    public ServerResponse<User> getUserInfo(HttpSession session, HttpServletRequest httpServletRequest) {
         User user = (User) session.getAttribute(Const.CURRENT_USER);
         /*不再从session当中获取用户，而是从cookie token当中*/
         /*String loginToken = CookieUtil.readLoginToken(httpServletRequest);*/
@@ -118,8 +122,6 @@ public class UserSpringSessionController {
         }
         return ServerResponse.createByErrorMessage("用户未登录,无法获取当前用户的信息");
     }
-
-
 
 
 }
