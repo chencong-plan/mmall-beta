@@ -42,7 +42,7 @@ public class UserSpringSessionController {
      * @param httpServletResponse httpServletResponse
      * @return 返回json
      */
-    @RequestMapping(value = "login.do", method = RequestMethod.POST)
+    @RequestMapping(value = "login.do", method = RequestMethod.GET)
     @ResponseBody
     public ServerResponse<User> login(String username,
                                       String password,
@@ -76,7 +76,7 @@ public class UserSpringSessionController {
      * @param response response
      * @return 返回服务器响应
      */
-    @RequestMapping(value = "logout.do", method = RequestMethod.POST)
+    @RequestMapping(value = "logout.do", method = RequestMethod.GET)
     @ResponseBody
     public ServerResponse<String> logout(HttpSession session,HttpServletRequest request, HttpServletResponse response) {
         session.removeAttribute(Const.CURRENT_USER);
@@ -100,7 +100,7 @@ public class UserSpringSessionController {
      * @param httpServletRequest request
      * @return 返回请求
      */
-    @RequestMapping(value = "get_user_info.do", method = RequestMethod.POST)
+    @RequestMapping(value = "get_user_info.do", method = RequestMethod.GET)
     @ResponseBody
     public ServerResponse<User> getUserInfo(HttpSession session,HttpServletRequest httpServletRequest) {
         User user = (User) session.getAttribute(Const.CURRENT_USER);
