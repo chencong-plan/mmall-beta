@@ -196,6 +196,11 @@ if (StringUtils.equals(className,"UserManageController") && StringUtils.equals(m
 
 ### response进行重置
 
+## RESTful接口设计
+
+### RESTful接口设计原理
+
+### 该风格适用哪些请求，怎样请求不合适
 
 ## 联系
 
