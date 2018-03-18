@@ -64,9 +64,15 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
-    <servlet-mapping>
+    <!--<servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>*.do</url-pattern>
+    </servlet-mapping>-->
+
+    <!--/ ji既可以使用*.do 也可以使用/ -->
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
 </web-app>
