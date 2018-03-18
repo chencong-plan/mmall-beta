@@ -94,6 +94,7 @@ public class AuthorityInterceptor implements HandlerInterceptor {
             PrintWriter out = response.getWriter();
 
             /*细化业务逻辑*/
+            /*上传由于富文本的空间要求，要特殊处理返回值，在这里区分是否登录以及是否是管理员权限*/
             if (user == null) {
                 if (StringUtils.equals(className, "ProductManageController") && StringUtils.equals(methodName, "richtextImgUpload")) {
                     /*富文本拦截器*/
