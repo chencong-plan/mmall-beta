@@ -70,6 +70,7 @@ public class AuthorityInterceptor implements HandlerInterceptor {
 //            如果是拦截登录请求，不打印参数，因为参数之中存在账户名和密码的信息
             return true;
         }*/
+        log.info("拦截器拦截到请求，className:{},methodName:{}，param:{}",className,methodName,requestParamBuffer.toString());
 
         /*判断用户是否登录*/
         User user = null;
