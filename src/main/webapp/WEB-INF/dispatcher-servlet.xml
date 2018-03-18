@@ -48,6 +48,8 @@
             <!--manage/product/b.do  /manage/** -->
             <!--manage/order/detail/b.do  /manage/** -->
             <mvc:mapping path="/manage/**"/>
+            <!--排除不走拦截器的请求-->
+            <mvc:exclude-mapping path="/manage/user/login.do"/>
             <bean class="com.mmall.controller.common.interceptor.AuthorityInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>

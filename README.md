@@ -166,6 +166,30 @@ public class ExceptionResolver implements HandlerExceptionResolver {
 
 ```
 
+## SpringMVC 拦截器
+
+### 使用配置文件拦截器
+```
+  <!--指定拦截-->
+  <mvc:mapping path="/manage/**"/>
+  <!--排除不走拦截器的请求-->
+  <mvc:exclude-mapping path="/manage/user/login.do"/>
+```
+
+### 使用request当中获取className和methodName进行指定拦截
+```
+/*请求中的方法名*/
+HandlerMethod handlerMethod = (HandlerMethod) handler;
+String methodName = handlerMethod.getMethod().getName();
+String className = handlerMethod.getBean().getClass().getSimpleName();
+/*使用代码进行拦截*/
+if (StringUtils.equals(className,"UserManageController") && StringUtils.equals(methodName,"login")){
+    log.info("拦截器拦截到请求，className:{},methodName:{}",className,methodName);
+    /*如果是拦截登录请求，不打印参数，因为参数之中存在账户名和密码的信息*/
+    return true;
+}
+
+```
 ## 联系
 
 [聪聪](https://ccoder.cc/)的独立博客 ，一个喜欢技术，喜欢钻研的95后。如果你看到这篇文章，千里之外，我在等你联系。
