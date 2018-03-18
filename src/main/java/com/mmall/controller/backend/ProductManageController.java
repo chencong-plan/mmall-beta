@@ -25,7 +25,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 /**
- * Created by geely
+ * 商品信息管理
+ *
+ * @author chencong
  */
 
 @Controller

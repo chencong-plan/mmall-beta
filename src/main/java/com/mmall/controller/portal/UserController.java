@@ -42,7 +42,7 @@ public class UserController {
      * @param httpServletResponse httpServletResponse
      * @return 返回json
      */
-    @RequestMapping(value = "login.do", method = RequestMethod.POST)
+    @RequestMapping(value = "login.do", method = RequestMethod.GET)
     @ResponseBody
     public ServerResponse<User> login(String username,
                                       String password,

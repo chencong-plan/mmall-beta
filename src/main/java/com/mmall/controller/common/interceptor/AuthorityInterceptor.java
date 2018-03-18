@@ -1,5 +1,6 @@
 package com.mmall.controller.common.interceptor;
 
+import com.google.common.collect.Maps;
 import com.mmall.common.Const;
 import com.mmall.common.ServerResponse;
 import com.mmall.pojo.User;
@@ -64,11 +65,11 @@ public class AuthorityInterceptor implements HandlerInterceptor {
         }
 
         /*使用代码进行拦截*/
-        if (StringUtils.equals(className,"UserManageController") && StringUtils.equals(methodName,"login")){
+     /*   if (StringUtils.equals(className,"UserManageController") && StringUtils.equals(methodName,"login")){
             log.info("拦截器拦截到请求，className:{},methodName:{}",className,methodName);
-            /*如果是拦截登录请求，不打印参数，因为参数之中存在账户名和密码的信息*/
+//            如果是拦截登录请求，不打印参数，因为参数之中存在账户名和密码的信息
             return true;
-        }
+        }*/
 
         /*判断用户是否登录*/
         User user = null;
@@ -94,9 +95,25 @@ public class AuthorityInterceptor implements HandlerInterceptor {
 
             /*细化业务逻辑*/
             if (user == null) {
-                out.print(JsonUtil.obj2String(ServerResponse.createByErrorMessage("拦截器拦截，用户未登录")));
+                if (StringUtils.equals(className, "ProductManageController") && StringUtils.equals(methodName, "richtextImgUpload")) {
+                    /*富文本拦截器*/
+                    Map resultMap = Maps.newHashMap();
+                    resultMap.put("success", false);
+                    resultMap.put("msg", "请登录管理员");
+                    out.print(JsonUtil.obj2String(resultMap));
+                } else {
+                    out.print(JsonUtil.obj2String(ServerResponse.createByErrorMessage("拦截器拦截，用户未登录")));
+                }
             } else {
-                out.print(JsonUtil.obj2String(ServerResponse.createByErrorMessage("拦截器拦截，用户无权限操作")));
+                if (StringUtils.equals(className, "ProductManageController") && StringUtils.equals(methodName, "richtextImgUpload")) {
+                    /*富文本拦截器*/
+                    Map resultMap = Maps.newHashMap();
+                    resultMap.put("success", false);
+                    resultMap.put("msg", "无权限操作");
+                    out.print(JsonUtil.obj2String(resultMap));
+                } else {
+                    out.print(JsonUtil.obj2String(ServerResponse.createByErrorMessage("拦截器拦截，用户无权限操作")));
+                }
             }
 
             out.flush();
