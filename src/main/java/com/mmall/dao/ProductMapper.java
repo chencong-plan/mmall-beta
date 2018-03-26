@@ -20,9 +20,16 @@ public interface ProductMapper {
 
     List<Product> selectList();
 
-    List<Product> selectByNameAndProductId(@Param("productName")String productName,@Param("productId") Integer productId);
+    List<Product> selectByNameAndProductId(@Param("productName") String productName, @Param("productId") Integer productId);
 
-    List<Product> selectByNameAndCategoryIds(@Param("productName")String productName,@Param("categoryIdList")List<Integer> categoryIdList);
+    List<Product> selectByNameAndCategoryIds(@Param("productName") String productName, @Param("categoryIdList") List<Integer> categoryIdList);
 
+    /**
+     * 这里一定要用Integer int无法为null 考虑到商品已经被删除
+     *
+     * @param id
+     * @return
+     */
+    Integer selectStockByProductId(Integer id);
 
 }
