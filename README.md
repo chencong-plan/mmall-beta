@@ -212,6 +212,19 @@ if (StringUtils.equals(className,"UserManageController") && StringUtils.equals(m
 
 ### MySQL 行锁 表锁
 
+## Redis 分布式锁
+
+###  Redis 分布式锁命令
++ setnx ==> 具有原子性，set的同时能够判断是否存在 setnx(lockkey,currenttime+timeout)
++ getset  ==> 具有原子性，获取旧的值，设置新的值
++ expire ==> 设置过期时间
++ del   ==> 删除
+
+ * 与实践戳的结合
+ * Redis分布式锁的流程图
+ * Redis分布式锁优化版流程图
+
+
 ## 联系
 
 [聪聪](https://ccoder.cc/)的独立博客 ，一个喜欢技术，喜欢钻研的95后。如果你看到这篇文章，千里之外，我在等你联系。
