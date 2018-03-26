@@ -2,7 +2,6 @@ package com.mmall.dao;
 
 import com.mmall.pojo.Order;
 import org.apache.ibatis.annotations.Param;
-import org.aspectj.weaver.ast.Or;
 
 import java.util.List;
 
