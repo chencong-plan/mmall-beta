@@ -154,7 +154,7 @@ public class Const {
     }
 
 
-    public interface  REDIS_LOCL{
+    public interface  REDIS_LOCK{
         /**
          * 关闭订单的分布式锁
          * */
