@@ -107,7 +107,7 @@ public class PropertiesUtil {
         Integer result;
         if (StringUtils.isBlank(value)) {
             result = defaultValue;
-            return  result;
+            return result;
         }
         try {
             result = Integer.parseInt(value);
@@ -148,9 +148,33 @@ public class PropertiesUtil {
         Boolean result;
         if (StringUtils.isBlank(value)) {
             result = defaultValue;
-            return  result;
+            return result;
         }
         result = "true".equals(value);
+        return result;
+    }
+
+
+    /**
+     * 获取配置文件当中key所对应的值<br>
+     * 如果其值存在且key不null则返回，值不存在返回defaultValue
+     *
+     * @param key          key
+     * @param defaultValue 默认值
+     * @return 返回key所对应的value或者defaultValue
+     */
+    public static Long getLongProperty(String key, long defaultValue) {
+        String value = props.getProperty(key.trim()).trim();
+        Long result = null;
+        if (StringUtils.isBlank(value)) {
+            result = defaultValue;
+            return result;
+        }
+        try {
+            result = Long.parseLong(value);
+        } catch (NumberFormatException e) {
+            logger.info("key:{} value:{}异常，{}", key, value, e);
+        }
         return result;
     }
 }

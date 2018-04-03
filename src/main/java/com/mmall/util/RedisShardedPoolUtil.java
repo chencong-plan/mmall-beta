@@ -121,5 +121,27 @@ public class RedisShardedPoolUtil {
         return result;
     }
 
+    /**
+     * setnx方法
+     *
+     * @param key   key
+     * @param value value
+     * @return 返回long
+     */
+    public static Long setnx(String key, String value) {
+        ShardedJedis jedis = null;
+        Long result = null;
+        try {
+            jedis = RedisShardedPool.getJedis();
+            result = jedis.setnx(key, value);
+        } catch (Exception e) {
+            log.info("setnx key:{},value:{} error", key, value, e);
+            RedisShardedPool.returnBrokenResource(jedis);
+            return result;
+        }
+        RedisShardedPool.returnResource(jedis);
+        return result;
+    }
+
 
 }
