@@ -38,7 +38,7 @@ public class CloseOrderTask {
         log.info("关闭订单定时任务结束");
     }
 
-    @Scheduled(cron = "0 */1 * * * ?")
+//    @Scheduled(cron = "0 */1 * * * ?")
     public void closeOrderTaskV2() {
         log.info("关闭订单定时任务开始");
         long lockTime = PropertiesUtil.getLongProperty("lock.timeout", 5000);
@@ -53,6 +53,8 @@ public class CloseOrderTask {
         log.info("关闭订单定时任务结束");
     }
 
+
+    @Scheduled(cron = "0 */1 * * * ?")
     public void closeOrderTaskV3() {
         log.info("关闭订单定时任务开始");
         long lockTime = PropertiesUtil.getLongProperty("lock.timeout", 5000);
